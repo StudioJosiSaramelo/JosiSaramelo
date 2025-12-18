@@ -3,9 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Studio Josi Saramelo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Studio Josi Saramelo | Especialista em Loiros de Alto Padrão</title>
+
+  <!-- SEO BÁSICO -->
+  <meta name="description" content="Studio Josi Saramelo – Especialista em cabelos loiros de alto padrão em Serra/ES. Transformações premium, loiros saudáveis, brilho intenso e atendimento personalizado. Agende seu horário pelo WhatsApp.">
+
+  <!-- FONTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
+    :root {
+      --bg-main: #FAF8F5;        /* Ivory */
+      --bg-card: #FFFFFF;
+      --accent: #D6C5A6;         /* Champagne gold */
+      --accent-soft: #E3D7CF;    /* Soft rose beige */
+      --accent-strong: #AF8B4C;  /* Gold mais forte */
+      --text-main: #2B2B2B;      /* Deep charcoal */
+      --text-soft: #6B5B50;
+      --highlight: #F2E7D8;      /* Pearl blonde */
+      --border-soft: #E7D9C7;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,42 +33,116 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #fff0f6, #f3e5f5);
-      color: #333;
-      padding-top: 70px;
+      background: var(--bg-main);
+      color: var(--text-main);
+      padding-top: 80px; /* espaço para navbar fixa */
     }
 
-    /* 🔝 NAVBAR */
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* CONTAINER GLOBAL */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px 40px;
+    }
+
+    /* NAVBAR PREMIUM */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #e91e63;
-      color: white;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      background: rgba(250, 248, 245, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(214, 197, 166, 0.4);
       z-index: 999;
     }
 
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
     .logo {
-      font-weight: bold;
-      font-size: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .logo-primary {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .logo-sub {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      letter-spacing: 0.18em;
     }
 
     .nav-links {
       display: flex;
-      gap: 15px;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.95rem;
     }
 
     .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
+      position: relative;
+      padding-bottom: 3px;
     }
 
-    /* 🍔 HAMBURGER MENU */
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent-strong);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* BOTÃO WHATSAPP NAV */
+    .btn-nav {
+      padding: 8px 16px;
+      border-radius: 24px;
+      border: 1px solid var(--accent-strong);
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .btn-nav span {
+      font-size: 1rem;
+    }
+
+    /* MENU MOBILE */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -59,223 +151,873 @@
     }
 
     .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background: white;
-      border-radius: 2px;
+      width: 22px;
+      height: 2px;
+      background: var(--text-main);
+      border-radius: 3px;
+    }
+
+    .nav-links-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      padding: 10px 16px 16px;
+      background: rgba(250, 248, 245, 0.98);
+      border-bottom: 1px solid rgba(214, 197, 166, 0.4);
+      font-size: 0.95rem;
+    }
+
+    .nav-links-mobile a {
+      padding: 4px 0;
+    }
+
+    .nav-links-mobile .btn-nav {
+      width: fit-content;
+      margin-top: 4px;
+    }
+
+    .nav-links-mobile.show {
+      display: flex;
+    }
+
+    /* HERO PREMIUM */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+      margin-top: 30px;
+      padding: 32px 24px;
+      background: var(--bg-card);
+      border-radius: 20px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--border-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -70px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(214, 197, 166, 0.35), transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 16px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      background: var(--highlight);
+      color: var(--text-soft);
+      margin-bottom: 14px;
+    }
+
+    .hero-tag span {
+      font-size: 0.9rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero-highlight {
+      color: var(--accent-strong);
+    }
+
+    .hero-subtitle {
+      font-size: 1.02rem;
+      color: var(--text-soft);
+      margin-bottom: 20px;
+      max-width: 480px;
+    }
+
+    .hero-list {
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+    }
+
+    .hero-list li {
+      margin-bottom: 6px;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-list li span {
+      font-size: 0.9rem;
+      color: var(--accent-strong);
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+      color: #fff;
+      font-size: 0.98rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(175, 139, 76, 0.35);
+    }
+
+    .btn-primary span.icon {
+      font-size: 1.1rem;
+    }
+
+    .btn-secondary-link {
+      font-size: 0.9rem;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+      color: var(--text-soft);
+      cursor: pointer;
+    }
+
+    .hero-note {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    .hero-note strong {
+      color: var(--accent-strong);
+    }
+
+    .hero-photo-wrapper {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-frame {
+      position: relative;
+      width: 280px;
+      max-width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(214, 197, 166, 0.8);
+      background: linear-gradient(145deg, #fdfbf9, #f5e7d9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .profile-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 22px;
+    }
+
+    .profile-badge {
+      position: absolute;
+      bottom: 14px;
+      left: 12px;
+      background: rgba(43, 43, 43, 0.9);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .profile-badge strong {
+      font-size: 0.8rem;
+    }
+
+    .profile-badge span {
+      font-size: 0.7rem;
+      opacity: 0.85;
+    }
+
+    /* SEÇÕES GERAIS */
+    section {
+      margin-top: 40px;
+    }
+
+    .section-card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      padding: 26px 22px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.03);
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 0.96rem;
+      color: var(--text-soft);
+      max-width: 520px;
+    }
+
+    /* SEÇÃO VALOR / SOBRE */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 10px;
+      font-size: 0.96rem;
+      color: var(--text-soft);
+    }
+
+    .about-list {
+      margin-top: 8px;
+    }
+
+    .about-list li {
+      list-style: none;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .about-list li span {
+      color: var(--accent-strong);
+      font-size: 0.9rem;
+      margin-top: 2px;
+    }
+
+    .about-highlight-box {
+      background: var(--highlight);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      border: 1px solid rgba(214, 197, 166, 0.5);
+    }
+
+    .about-highlight-box strong {
+      color: var(--text-main);
+    }
+
+    /* SERVIÇOS */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      border-radius: 14px;
+      padding: 14px 14px 12px;
+      background: #FBF7F1;
+      border: 1px solid rgba(214, 197, 166, 0.6);
+    }
+
+    .service-header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .service-name {
+      font-weight: 500;
+      font-size: 0.98rem;
+    }
+
+    .service-price {
+      font-size: 0.9rem;
+      color: var(--accent-strong);
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .service-tag {
+      font-size: 0.75rem;
+      margin-top: 8px;
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(214, 197, 166, 0.13);
+      color: var(--text-soft);
+    }
+
+    /* GALERIA PREMIUM */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(214, 197, 166, 0.7);
+      background: #F9F3EB;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.45), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      color: #fff;
+      font-size: 0.78rem;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* CTA WHATSAPP */
+    .cta-section {
+      text-align: center;
+    }
+
+    .cta-section p {
+      font-size: 0.96rem;
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+
+    .cta-note {
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      margin-top: 8px;
+    }
+
+    /* HORÁRIOS & LOCALIZAÇÃO */
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: 20px;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      margin-top: 6px;
+    }
+
+    .hours-table tr + tr td {
+      border-top: 1px solid rgba(231, 217, 199, 0.9);
+    }
+
+    .hours-table td {
+      padding: 6px 0;
+    }
+
+    .map-wrapper {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(214, 197, 166, 0.8);
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 260px;
+      border: 0;
+      display: block;
+    }
+
+    .address-text {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      margin-top: 10px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      padding: 26px 16px 18px;
+      border-top: 1px solid rgba(231, 217, 199, 0.8);
+      margin-top: 30px;
+    }
+
+    footer strong {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 26px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .two-column {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
+      body {
+        padding-top: 70px;
+      }
+
       .nav-links {
         display: none;
-        flex-direction: column;
-        background-color: #e91e63;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        padding: 20px 0;
-      }
-
-      .nav-links a {
-        padding: 12px 20px;
-        font-size: 1.1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-      }
-
-      .nav-links.show {
-        display: flex;
       }
 
       .menu-toggle {
         display: flex;
       }
-    }
 
-    /* 📦 SEZIONI */
-    section, header {
-      max-width: 1000px;
-      margin: 30px auto;
-      background: #f8bbd0;
-      border-radius: 15px;
-      padding: 25px 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 22px 18px;
+      }
 
-    header {
-      text-align: center;
-    }
+      .hero h1 {
+        font-size: 2rem;
+      }
 
-    .profile-pic {
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 6px solid #fff;
-      margin: 0 auto;
-    }
+      .profile-frame {
+        width: 240px;
+      }
 
-    @media (max-width: 480px) {
-      .profile-pic {
-        width: 90vw;
-        height: 90vw;
+      .section-card {
+        padding: 20px 18px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    header h1 {
-      font-size: 2.8rem;
-      color: #880e4f;
-      margin-top: 20px;
-    }
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
 
-    header p {
-      font-size: 1.3rem;
-      margin-top: 10px;
-      font-weight: 500;
-      color: #4a0030;
-    }
+      .hero-cta-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
 
-    .cta-button {
-      background-color: #e91e63;
-      color: white;
-      padding: 15px 25px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 25px;
-      display: inline-block;
-    }
+      .btn-primary {
+        width: 100%;
+      }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .services ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .services li {
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-    }
-
-    .hours table {
-      width: 100%;
-      margin-top: 10px;
-    }
-
-    .hours td {
-      padding: 8px 0;
-    }
-
-    .map iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
-    }
-
-    /* ✅ FOOTER */
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #555;
-      margin: 40px 20px;
-    }
-
-    footer strong {
-      color: #880e4f;
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔝 MENU -->
+  <!-- NAVBAR PREMIUM -->
   <nav>
-    <div class="logo">Studio Josi</div>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-primary">Studio Josi Saramelo</div>
+        <div class="logo-sub">Especialista em Loiros</div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#galeria">Transformações</a>
+        <a href="#contato">Horário & Localização</a>
+        <a class="btn-nav" href="https://api.whatsapp.com/send?phone=5527998661079" target="_blank" rel="noopener noreferrer">
+          <span>📲</span> Agendar pelo WhatsApp
+        </a>
+      </div>
+
+      <div class="menu-toggle" id="menuToggle">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-    <div class="nav-links" id="navLinks">
-      <a href="#inicio">Início</a>
-      <a href="#galeria">Galeria</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#horario">Horário</a>
-      <a href="#localizacao">Localização</a>
+
+    <div class="nav-links-mobile" id="navMobile">
+      <a href="#inicio" onclick="closeMenu()">Início</a>
+      <a href="#servicos" onclick="closeMenu()">Serviços</a>
+      <a href="#galeria" onclick="closeMenu()">Transformações</a>
+      <a href="#contato" onclick="closeMenu()">Horário & Localização</a>
+      <a class="btn-nav" href="https://api.whatsapp.com/send?phone=5527998661079" target="_blank" rel="noopener noreferrer">
+        <span>📲</span> Agendar pelo WhatsApp
+      </a>
     </div>
   </nav>
 
-  <!-- 👩 HEADER -->
-  <header id="inicio">
-    <img class="profile-pic" src="perfil.jpg" alt="Josi Saramelo">
-    <h1>Studio Josi Saramelo</h1>
-    <p>Especialista em cabelos loiros | Make-up | Esmalteria</p>
-    <a class="cta-button" href="https://api.whatsapp.com/send?phone=5527998661079" target="_blank">📲 Agende via WhatsApp</a>
-  </header>
+  <main class="container">
 
-  <!-- 📸 GALERIA -->
-  <section id="galeria">
-    <h2>📸 Galeria</h2>
-    <div class="gallery">
-      <img src="galeria1.jpg" alt="Antes e Depois">
-      <img src="galeria2.jpg" alt="Cabelo Loiro">
-      <img src="galeria6.jpg" alt="Maquiagem Cliente">
-      <img src="galeria4.jpg" alt="Corte Curto">
-    </div>
-  </section>
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span>✦</span> Loiros de alto padrão em Serra/ES
+        </div>
+        <h1>
+          Loiros <span class="hero-highlight">perfeitos</span> para mulheres que exigem sofisticação
+        </h1>
+        <p class="hero-subtitle">
+          Transformações exclusivas assinadas por Josi Saramelo – especialista em cabelos loiros, beleza e autoestima feminina.
+        </p>
 
-  <!-- 💇‍♀️ SERVIÇOS -->
-  <section class="services" id="servicos">
-    <h2>💇‍♀️ Serviços</h2>
-    <ul>
-      <li>Luzes / Mechas - R$350</li>
-      <li>Hidratação Profunda - R$120</li>
-      <li>Escova Modelada - R$90</li>
-      <li>Maquiagem Profissional - R$180</li>
-      <li>Design de Sobrancelhas - R$60</li>
-    </ul>
-  </section>
+        <ul class="hero-list">
+          <li><span>•</span> Técnica segura com foco em saúde do fio</li>
+          <li><span>•</span> Loiros naturais, iluminados e personalizados</li>
+          <li><span>•</span> Atendimento acolhedor em ambiente elegante</li>
+        </ul>
 
-  <!-- ⏰ HORÁRIOS -->
-  <section class="hours" id="horario">
-    <h2>🕒 Horário de Funcionamento</h2>
-    <table>
-      <tr><td>Segunda a Sexta</td><td>09:00 – 19:00</td></tr>
-      <tr><td>Sábado</td><td>09:00 – 14:00</td></tr>
-      <tr><td>Domingo</td><td>Fechado</td></tr>
-    </table>
-  </section>
+        <div class="hero-cta-group">
+          <a class="btn-primary" href="https://api.whatsapp.com/send?phone=5527998661079" target="_blank" rel="noopener noreferrer">
+            <span class="icon">📲</span> Agendar agora pelo WhatsApp
+          </a>
+          <a class="btn-secondary-link" href="#galeria">
+            Ver transformações reais
+          </a>
+        </div>
 
-  <!-- 🗺️ MAPPA -->
-  <section class="map" id="localizacao">
-    <h2>📍 Localização</h2>
-    <iframe src="https://www.google.com/maps?q=Av.+Dr.+Milton+David,+450,+Serra+-+ES&output=embed"></iframe>
-  </section>
+        <p class="hero-note">
+          <strong>Vagas limitadas</strong> para garantir atendimento premium e tempo exclusivo para cada cliente.
+        </p>
+      </div>
 
-  <!-- ✅ FOOTER -->
+      <div class="hero-photo-wrapper">
+        <div class="profile-frame">
+          <img src="perfil.jpg" alt="Josi Saramelo - Especialista em cabelos loiros">
+          <div class="profile-badge">
+            <strong>+10.000 seguidoras</strong>
+            <span>Referência em loiros naturais</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO VALOR / SOBRE -->
+    <section class="section-card" id="sobre">
+      <div class="section-header">
+        <div class="section-kicker">Sobre o studio</div>
+        <h2 class="section-title">Cada loiro pensado como uma obra de arte</h2>
+        <p class="section-subtitle">
+          A combinação perfeita entre técnica, bom gosto e cuidado genuíno com a saúde do seu cabelo.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            No Studio Josi Saramelo, cada detalhe importa. Antes de qualquer transformação, analisamos o seu tom de pele,
+            o histórico do fio e o estilo de vida, para criar um loiro que realmente converse com quem você é.
+          </p>
+          <p>
+            O foco é sempre o mesmo: <strong>loiros saudáveis, elegantes e com acabamento impecável</strong> – daqueles que
+            não precisam de filtro.
+          </p>
+
+          <ul class="about-list">
+            <li>
+              <span>✶</span>
+              <div>Planejamento de cor individual para cada cliente.</div>
+            </li>
+            <li>
+              <span>✶</span>
+              <div>Técnicas modernas de clareamento com máximo respeito à fibra capilar.</div>
+            </li>
+            <li>
+              <span>✶</span>
+              <div>Ambiente intimista, aconchegante e pensado para o seu momento de autocuidado.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="about-highlight-box">
+          <strong>“Seu loiro não precisa ser apenas claro. Ele precisa ser sofisticado, saudável e com a sua personalidade.”</strong>
+          <br><br>
+          Seja para uma iluminação sutil ou uma transformação completa, o objetivo é o mesmo:
+          que você saia do studio se sentindo ainda mais confiante, elegante e segura de si.
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="section-card" id="servicos">
+      <div class="section-header">
+        <div class="section-kicker">Serviços</div>
+        <h2 class="section-title">Experiências pensadas para valorizar a sua beleza</h2>
+        <p class="section-subtitle">
+          Do loiro dos sonhos à finalização perfeita – tudo em um só lugar, com padrão de studio premium.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-header-line">
+            <div class="service-name">Luzes / Mechas</div>
+            <div class="service-price">R$ 350</div>
+          </div>
+          <p class="service-desc">
+            Técnicas de iluminação personalizadas para criar loiros naturais, elegantes e com transição suave entre raiz e pontas.
+          </p>
+          <div class="service-tag">Serviço principal · Loiros de alto padrão</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-header-line">
+            <div class="service-name">Hidratação Profunda</div>
+            <div class="service-price">R$ 120</div>
+          </div>
+          <p class="service-desc">
+            Tratamentos específicos para recuperar brilho, maciez e força dos fios, especialmente após processos químicos.
+          </p>
+          <div class="service-tag">Saúde do fio · Brilho e maciez</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-header-line">
+            <div class="service-name">Escova Modelada</div>
+            <div class="service-price">R$ 90</div>
+          </div>
+          <p class="service-desc">
+            Finalização com movimento, volume na medida certa e acabamento polido para qualquer ocasião.
+          </p>
+          <div class="service-tag">Finalização premium</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-header-line">
+            <div class="service-name">Maquiagem Profissional</div>
+            <div class="service-price">R$ 180</div>
+          </div>
+          <p class="service-desc">
+            Make up completa para realçar seus traços com naturalidade, durabilidade e acabamento fotográfico.
+          </p>
+          <div class="service-tag">Eventos · Ensaios · Datas especiais</div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-header-line">
+            <div class="service-name">Design de Sobrancelhas</div>
+            <div class="service-price">R$ 60</div>
+          </div>
+          <p class="service-desc">
+            Harmonização do olhar através de um design preciso, delicado e adaptado ao formato do seu rosto.
+          </p>
+          <div class="service-tag">Detalhes que fazem a diferença</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="section-card" id="galeria">
+      <div class="section-header">
+        <div class="section-kicker">Transformações reais</div>
+        <h2 class="section-title">Antes e depois que falam por si</h2>
+        <p class="section-subtitle">
+          Alguns dos loiros e produções que já transformaram a autoestima de mulheres no Studio Josi Saramelo.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="galeria1.jpg" alt="Transformação loiro Studio Josi Saramelo - cliente 1">
+          <div class="gallery-caption">Loiro iluminado com acabamento espelhado</div>
+        </div>
+        <div class="gallery-item">
+          <img src="galeria2.jpg" alt="Transformação loiro Studio Josi Saramelo - cliente 2">
+          <div class="gallery-caption">Clareamento com transição suave e natural</div>
+        </div>
+        <div class="gallery-item">
+          <img src="galeria6.jpg" alt="Maquiagem profissional realizado por Josi Saramelo">
+          <div class="gallery-caption">Maquiagem profissional para evento especial</div>
+        </div>
+        <div class="gallery-item">
+          <img src="galeria4.jpg" alt="Corte e styling no Studio Josi Saramelo">
+          <div class="gallery-caption">Corte e styling com movimento e leveza</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA WHATSAPP -->
+    <section class="section-card cta-section" id="cta">
+      <div class="section-header">
+        <div class="section-kicker">Agendamento</div>
+        <h2 class="section-title">Seu novo loiro começa com uma mensagem</h2>
+      </div>
+      <p>
+        Clique no botão abaixo, fale diretamente com o Studio via WhatsApp e garanta seu horário com atendimento
+        totalmente personalizado.
+      </p>
+
+      <div style="margin-top: 18px;">
+        <a class="btn-primary" href="https://api.whatsapp.com/send?phone=5527998661079" target="_blank" rel="noopener noreferrer">
+          <span class="icon">💬</span> Agendar agora pelo WhatsApp
+        </a>
+      </div>
+      <p class="cta-note">
+        Atendimentos com hora marcada para garantir uma experiência tranquila, exclusiva e sem pressa.
+      </p>
+    </section>
+
+    <!-- HORÁRIOS & LOCALIZAÇÃO -->
+    <section class="section-card" id="contato">
+      <div class="section-header">
+        <div class="section-kicker">Horário & localização</div>
+        <h2 class="section-title">Studio em Serra/ES, de fácil acesso</h2>
+        <p class="section-subtitle">
+          Um espaço aconchegante, elegante e preparado para o seu momento de autocuidado.
+        </p>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <h3 style="font-size: 1rem; margin-bottom: 6px;">Horário de funcionamento</h3>
+          <table class="hours-table">
+            <tr>
+              <td>Segunda a Sexta</td>
+              <td style="text-align: right;">09:00 – 19:00</td>
+            </tr>
+            <tr>
+              <td>Sábado</td>
+              <td style="text-align: right;">09:00 – 14:00</td>
+            </tr>
+            <tr>
+              <td>Domingo</td>
+              <td style="text-align: right;">Fechado</td>
+            </tr>
+          </table>
+
+          <p class="address-text">
+            📍 <strong>Av. Dr. Milton David, 450 – Serra, ES</strong><br>
+            Studio com fácil estacionamento e ambiente climatizado.
+          </p>
+        </div>
+
+        <div>
+          <div class="map-wrapper">
+            <iframe src="https://www.google.com/maps?q=Av.+Dr.+Milton+David,+450,+Serra+-+ES&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
   <footer>
     © 2025 Studio Josi Saramelo. Todos os direitos reservados.<br>
-    <strong>Powered by DUDA Digital Studio</strong>
+    <strong>Desenvolvido por DUDA Digital Studio</strong>
   </footer>
 
-  <!-- 🍔 SCRIPT -->
+  <!-- SCRIPT MENU MOBILE -->
   <script>
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('show');
+    const menuToggle = document.getElementById('menuToggle');
+    const navMobile = document.getElementById('navMobile');
+
+    menuToggle.addEventListener('click', () => {
+      navMobile.classList.toggle('show');
+    });
+
+    function closeMenu() {
+      navMobile.classList.remove('show');
     }
   </script>
-
 </body>
 </html>
